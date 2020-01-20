@@ -48,10 +48,10 @@ echo '2.4 создание разделов'
  #echo y;
   
  echo w;
-) | fdisk /dev/sda
+) | cfdisk /dev/sda
 
 echo 'Ваша разметка диска'
-fdisk -l
+cfdisk -l
 
 echo '2.4.2 Форматирование дисков'
 
