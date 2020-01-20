@@ -29,44 +29,35 @@ echo '2.4 создание разделов'
  echo n;
  echo;
  echo;
- echo +50G;
+ echo +40G;
  echo y;
  
-  echo n;
-  echo;
-  echo;
-  echo;
-  echo +16024M;
-  echo y;
-  #echo t;
-  #echo 2;
   
- #echo n;
- #echo;
- #echo;
- #echo;
- #echo y;
+ echo n;
+ echo;
+ echo;
+ echo;
+ echo y;
   
  echo w;
-) | cfdisk /dev/sda
+) | fdisk /dev/sda
 
 echo 'Ваша разметка диска'
-cfdisk -l
+fdisk -l
 
 echo '2.4.2 Форматирование дисков'
 
 mkfs.fat -F32 /dev/sda1
 mkfs.ext4  /dev/sda2
-mkswap /dev/sda3 -L swap
-#mkfs.ext4  /dev/sda4
+mkfs.ext4  /dev/sda3
 
 echo '2.4.3 Монтирование дисков'
 mount /dev/sda2 /mnt
 mkdir /mnt/home
 mkdir -p /mnt/boot/efi
 mount /dev/sda1 /mnt/boot/efi
-mount /dev/sda4 /mnt/home
-swapon /dev/sda3
+mount /dev/sda3 /mnt/home
+
 
 echo '3.1 Выбор зеркал для загрузки.'
 rm -rf /etc/pacman.d/mirrorlist
