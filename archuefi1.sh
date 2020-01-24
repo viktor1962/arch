@@ -40,7 +40,7 @@ echo '2.4 создание разделов'
   echo p;
   echo;
   echo;
-  echo a;
+  echo t;
   echo 1;
   
  echo w;
