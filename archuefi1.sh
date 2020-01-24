@@ -15,33 +15,34 @@ echo '2.3 Синхронизация системных часов'
 timedatectl set-ntp true
 
 echo '2.4 создание разделов'
-(
- echo g;
+ (
+  echo g;
 
- echo n;
-  echo;
-  echo;
+  echo n;
+  echo ;
   echo;
   echo +500M;
-
-  echo n;
-  echo;
-  echo;
-  echo;
-  echo +40G;
-
-  echo n;
-  echo;
-  echo;
-  echo;
-  echo +16024M;
-
-  echo n;
-  echo p;
-  echo;
-  echo;
+  echo y;
   echo t;
-  echo 1;
+  echo1;
+
+  echo n;
+  echo;
+  echo;
+  echo +40G
+  echo y;
+
+  echo n;
+  echo;
+  echo;
+  echo +16000M
+  echo y;
+
+  echo n;
+  echo;
+  echo;
+  echo;
+  echo y;
   
  echo w;
 ) | fdisk /dev/sda
@@ -51,10 +52,10 @@ fdisk -l
 
 echo '2.4.2 Форматирование дисков'
 
-mkfs.fat -F32 /dev/sda1 -L "boot"
-mkfs.ext4  /dev/sda2 -L "root"
-mkswap /dev/sda3 -L "swap"
-mkfs.ext4  /dev/sda4 -L "home"
+mkfs.fat -F32 /dev/sda1
+mkfs.ext4  /dev/sda2
+mkswap /dev/sda3
+mkfs.ext4  /dev/sda4
 
 echo '2.4.3 Монтирование дисков'
 mount /dev/sda2 /mnt
