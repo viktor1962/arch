@@ -23,8 +23,8 @@ echo '2.4 создание разделов'
   echo;
   echo +500M;
   echo y;
-  echo t;
-  echo1;
+  echo;
+  echo 1;
 
   echo n;
   echo;
@@ -36,6 +36,7 @@ echo '2.4 создание разделов'
   echo;
   echo;
   echo +16000M
+  echo t;
   echo y;
 
   echo n;
