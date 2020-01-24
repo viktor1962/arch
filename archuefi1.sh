@@ -19,25 +19,29 @@ echo '2.4 создание разделов'
  echo g;
 
  echo n;
- echo ;
- echo;
- echo +300M;
- echo y;
- echo t;
- echo 1;
+  echo;
+  echo;
+  echo;
+  echo +500M;
 
- echo n;
- echo;
- echo;
- echo +40G;
- echo y;
- 
-  
- echo n;
- echo;
- echo;
- echo;
- echo y;
+  echo n;
+  echo;
+  echo;
+  echo;
+  echo +40G;
+
+  echo n;
+  echo;
+  echo;
+  echo;
+  echo +16024M;
+
+  echo n;
+  echo p;
+  echo;
+  echo;
+  echo a;
+  echo 1;
   
  echo w;
 ) | fdisk /dev/sda
@@ -47,16 +51,18 @@ fdisk -l
 
 echo '2.4.2 Форматирование дисков'
 
-mkfs.fat -F32 /dev/sda1
-mkfs.ext4  /dev/sda2
-mkfs.ext4  /dev/sda3
+mkfs.fat -F32 /dev/sda1 -L "boot"
+mkfs.ext4  /dev/sda2 -L "root"
+mkswap /dev/sda3 -L "swap"
+mkfs.ext4  /dev/sda4 -L "home"
 
 echo '2.4.3 Монтирование дисков'
 mount /dev/sda2 /mnt
 mkdir /mnt/home
 mkdir -p /mnt/boot/efi
 mount /dev/sda1 /mnt/boot/efi
-mount /dev/sda3 /mnt/home
+swapon /dev/sda3
+mount /dev/sda4 /mnt/home
 
 
 echo '3.1 Выбор зеркал для загрузки.'
